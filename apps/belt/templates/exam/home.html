@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>home</title>
+			{% load static %}
+			<link rel="stylesheet" type="text/css" href="{% static 'exam/style.css' %}" media="screen" title="no title">
+		</head>
+		</head>
+		<body>
+			<div id='home2'>
+				<div id='header'>
+					<h3>Welcome {{get.first_name}}</h3>
+					<a href="/logout">logout</a>
+				</div>
+				<div id='body'> 
+				<h1>Here is a list of all of your friends</h1>
+				
+				<table>
+					<thead>
+						<th>Alias</th>
+						<th>Actions</th>
+					</thead>
+					{%for element in users%}
+					<tbody>					
+						<td>{{element.name}}</td>
+						<td><a href="view/{{element.id}}">View Profile/</a><a href="remove/{{element.id}}">Remove as Friend</a></td>
+						
+					</tbody>
+					{%endfor%}
+				</table>
+				<h1>Other users not in your friends list</h1>	
+				<table>
+					<thead>
+						<th>Alias</th>
+						<th>Actions</th>
+					</thead>
+					<tbody>
+						{%for element in all%}
+						<tr>
+							<td><a href="view/{{element.id}}">{{element.alias}}</a></td>
+							<td><a href="/friend/{{element.id}}" >Add as friend</a></td>
+						</tr>
+						{%endfor%}
+					</tbody>
+				</table>			 		
+				</div>
+			</div>
+		</body>
+	</html>

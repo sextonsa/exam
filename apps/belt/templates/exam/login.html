@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>home</title>
+			{% load static %}
+			<link rel="stylesheet" type="text/css" href="{% static 'exam/style.css' %}" media="screen" title="no title">
+		</head>
+		<body>
+			<div id='home'>
+				<h1>Welcome to the...</h1>
+				{% if messages %}
+					{%for message in messages%}
+						<h2>{{message}}</h2>
+					{%endfor%}
+				{%endif%}
+				<div id='reg'>
+			<h1>Register</h1>
+				<form action='/process' method='POST'>
+				{%csrf_token%}
+					First Name: <input type="text" name="fname">
+					Last Name: <input type="text" name="lname">
+					Alias: <input type="text" name="alias">
+					Email: <input type="text" name="email">
+					Password: <input type="password" name="pword">
+					Confirm Password: <input type="password" name="cword">
+					<input type="submit" name="submit" value='Register'>
+					<input type="submit" name="submit" value='Rules here'>
+				</form>
+			</div>
+			<div id='test'>
+					<p id="error">B<span>E</span>LT</p>
+ 				 	<p id="code">E<span>X</span><span>AM</span></p>
+					</div>
+			<div id='log'>
+			<h1>Login</h1>
+				<form action='/login' method='POST'>
+				{%csrf_token%}
+					Email: <input type="text" name="email">
+					Password: <input type="password" name="pword">
+					<input type="submit" name="submit" value='Login'>
+				</form>
+			</div>
+				
+			</div>
+		</body>	
+
+	</html>
